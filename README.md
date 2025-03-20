@@ -1,10 +1,21 @@
+<img src="imgs/logo.png" alt="Logo" style="display: block; margin: 0 auto; width: 25%">
+
 # Flutter Dev Container for Android
 
 This project provides a pre-configured development container for building Flutter applications in Android.
 
+Runs on Windows (WSL2 recommended), MacOS (see note below) and Linux (should? please someone test it).
+
+> [!IMPORTANT]
+> The container currently builds for the amd64 architecture regardless of the host system due to compatibility issues with Apple Silicon chips.
+> I will eventually investigate native architecture builds later, but for now this will do.
+
 ## Getting Started
 
 1. **Open in Dev Container:** Open this project in VS Code and allow it to open in a Dev Container. This will build the Docker image and start the container.
+
+    > [!NOTE]
+    > The first time is gonna take a while, depending on how fast your internet is. This is because the SDKs and tools that need to be downloaded are relatively large (5GB approximately)
 
 2. **Connect your Android Device:**
 
@@ -25,7 +36,7 @@ This project provides a pre-configured development container for building Flutte
     * Confirm that a green checkmark appears next to "Connected device".
 
 > [!TIP]
-> You can also use this devcontainer with other IDEs using [DevPod(https://devpod.sh/). It's free and open source!
+> You can also use this devcontainer with other IDEs using [DevPod](https://devpod.sh/). It's free and open source!
 >
 > **Important Note for Alternative IDEs:** Some IDEs might default to the `sh` shell instead of `bash`, which is the shell configured in this devcontainer. If you're using an IDE other than VS Code, please ensure your terminal is configured to use `bash` to avoid potential compatibility issues.
 
@@ -44,3 +55,17 @@ This project provides a pre-configured development container for building Flutte
 * Customizable .bashrc
 
 That's it! You're now ready to start developing Flutter apps for Android in a consistent and isolated environment.
+
+## Current issues
+
+1. Macs with Apple Silicon chips are forced to use the amd64 builds.
+2. On these devices, compiling the app via `flutter run` succeeds, and hot reloading appears functional. However, the build process initially displays the following error. I hope the native build (if it works) will make this go away.
+
+    ```sh
+    Caught exception: Couldn't poll for events, error = 4
+    Error while receiving file changes
+    net.rubygrapefruit.platform.NativeException: Couldn't poll for events, error = 4
+        at net.rubygrapefruit.platform.internal.jni.AbstractNativeFileEventFunctions$NativeFileWatcher.executeRunLoop0(Native Method)
+        at net.rubygrapefruit.platform.internal.jni.AbstractNativeFileEventFunctions$NativeFileWatcher.executeRunLoop(AbstractNativeFileEventFunctions.java:42)
+        at net.rubygrapefruit.platform.internal.jni.AbstractFileEventFunctions$AbstractFileWatcher$1.run(AbstractFileEventFunctions.java:154)
+    ```

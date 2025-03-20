@@ -1,7 +1,7 @@
 # Inspired by: https://blog.devops.dev/developing-flutter-applications-inside-a-devcontainer-4b13de5369e2
 
 # --- Builder Stage ---
-FROM debian:bookworm-slim AS builder
+FROM --platform=linux/amd64 debian:bookworm-slim AS builder
 
 # Avoid warnings by switching to noninteractive
 ARG DEBIAN_FRONTEND=noninteractive
@@ -29,7 +29,7 @@ RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools \
 
 # Accept Android SDK licenses and install necessary components
 RUN yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses && \
-    ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+    ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "build-tools;34.0.0" "cmake;3.22.1" "ndk;26.3.11579264" "platform-tools" "platforms;android-35"
 
 # Download and install Flutter
 RUN mkdir -p ${FLUTTER_SDK_ROOT} \
@@ -38,7 +38,7 @@ RUN mkdir -p ${FLUTTER_SDK_ROOT} \
     && rm flutter.tar.xz
 
 # # --- Final Stage ---
-FROM debian:bookworm-slim AS final
+FROM --platform=linux/amd64 debian:bookworm-slim AS final
 
 ARG USERNAME=vscode
 ARG USER_UID=1000

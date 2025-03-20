@@ -17,6 +17,8 @@
 	],
 
     "runArgs": [
+        "--platform",
+        "linux/amd64",
         "--name",
         "${localWorkspaceFolderBasename}_flutter4android_devcontainer"
     ],
@@ -26,7 +28,7 @@
     // "updateContentCommand": "",
     // "postCreateCommand": "",
     // "postStartCommand": "",
-    // "postAttachCommand": "",
+    "postAttachCommand": "bash ./.devcontainer/post-attach.sh",
 
     "waitFor": "onCreateCommand",
 

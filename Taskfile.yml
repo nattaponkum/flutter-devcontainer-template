@@ -34,6 +34,8 @@ tasks:
     silent: true
     cmds:
       - >
+        {{if (not .CLI_ARGS)}} echo -e '\n❌ Missing IP address\n' && exit 1 {{end}}
+      - >
         adb connect {{.CLI_ARGS}}:5555
         | grep 'failed to authenticate to {{.CLI_ARGS}}:5555' > /dev/null
         && echo '📲 Check your device and allow connection'
