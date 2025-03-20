@@ -15,15 +15,15 @@ Runs on Windows (WSL2 recommended), MacOS (see note at the end) and Linux (at le
 ## Prerequisites
 
 - Docker
-- VSCode, most VSCode forks, or alternatively, DevPod (see tip below)
+- VSCode, or most VSCode forks, or DevPod and most IDEs (see later tip)
 - Ability to read
 
 ## Getting Started
 
 1. **Open in Dev Container:** Open this project in VS Code and allow it to open in a Dev Container. This will build the Docker image and start the container.
 
-    > [!NOTE]
-    > The first time is gonna take a while, depending on how fast your internet is. This is because the SDKs and tools that need to be downloaded are relatively large (5GB approximately)
+> [!NOTE]
+> The first time is gonna take a while, depending on how fast your internet is. This is because the SDKs and tools that need to be downloaded are relatively large (5GB approximately).
 
 2. **Connect your Android Device:**
 
