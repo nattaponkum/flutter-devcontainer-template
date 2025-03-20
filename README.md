@@ -6,7 +6,7 @@
 
 This project provides a pre-configured development container for building Flutter applications in Android.
 
-Runs on Windows (WSL2 recommended), MacOS (see note below) and Linux (should? please someone test it).
+Runs on Windows (WSL2 recommended), MacOS (see note at the end) and Linux (at least in theory, please someone test it).
 
 > [!IMPORTANT]
 > The container currently builds for the amd64 architecture regardless of the host system due to compatibility issues with Apple Silicon chips.
