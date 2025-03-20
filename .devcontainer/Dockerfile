@@ -9,7 +9,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV ANDROID_SDK_ROOT=/android-sdk
 ENV FLUTTER_SDK_ROOT=/flutter
 
-# Enable multiarch config for arm64 hosts, configure apt and install required packages
 RUN apt-get update \
     && apt-get -y install --no-install-recommends \
     wget \
@@ -37,7 +36,7 @@ RUN mkdir -p ${FLUTTER_SDK_ROOT} \
     && tar xf flutter.tar.xz -C ${FLUTTER_SDK_ROOT} --strip-components=1 \
     && rm flutter.tar.xz
 
-# # --- Final Stage ---
+# --- Final Stage ---
 FROM --platform=linux/amd64 debian:bookworm-slim AS final
 
 ARG USERNAME=vscode
@@ -67,7 +66,7 @@ RUN dpkg --add-architecture amd64 \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# # Create a non-root user
+# Create a non-root user
 RUN groupadd --gid ${USER_GID} ${USERNAME} \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
     # [Optional add sudo support if needed in your devcontainer.
@@ -76,6 +75,6 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
 
 USER ${USERNAME}
 
-# # Copy SDKs from the builder stage to the user's home directory
+# Copy SDKs from the builder stage to the user's home directory
 COPY --from=builder --chown=${USERNAME}:${USERNAME} /android-sdk ${ANDROID_SDK_ROOT}
 COPY --from=builder --chown=${USERNAME}:${USERNAME} /flutter ${FLUTTER_SDK_ROOT}
