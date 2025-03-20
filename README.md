@@ -1,4 +1,6 @@
+<p align="center">
 <img src="imgs/logo.png" alt="Logo" style="display: block; margin: 0 auto; width: 25%">
+</p>
 
 # Flutter Dev Container for Android
 
@@ -9,6 +11,12 @@ Runs on Windows (WSL2 recommended), MacOS (see note below) and Linux (should? pl
 > [!IMPORTANT]
 > The container currently builds for the amd64 architecture regardless of the host system due to compatibility issues with Apple Silicon chips.
 > I will eventually investigate native architecture builds later, but for now this will do.
+
+## Prerequisites
+
+- Docker
+- VSCode, most VSCode forks, or alternatively, DevPod (see tip below)
+- Ability to read
 
 ## Getting Started
 
