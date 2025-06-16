@@ -30,7 +30,7 @@
     // "postStartCommand": "",
     "postAttachCommand": "bash ./.devcontainer/post-attach.sh",
 
-    "waitFor": "onCreateCommand",
+    "waitFor": "postStartCommand",
 
     "remoteUser": "${localEnv:USER}${localEnv:USERNAME}",
 
