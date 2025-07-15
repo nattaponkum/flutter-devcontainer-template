@@ -9,7 +9,8 @@
     },
 
     "containerEnv": {
-        "SHELL": "/bin/bash"
+        "SHELL": "/bin/bash",
+        "ANDROID_ADB_SERVER_ADDRESS": "192.168.0.25"
     },
 
     "mounts": [
@@ -49,4 +50,5 @@
             ]
         }
     }
+    
 }
