@@ -1,0 +1,12 @@
+{
+    "cmake.ignoreCMakeListsMissing": true,
+    "dart.flutterRunAdditionalArgs": [
+        "--host-vmservice-port=5037"
+    ],
+    "dart.debugExternalPackageLibraries": true,
+    "dart.debugSdkLibraries": false,
+    "dart.vmAdditionalArgs": [
+        "--host-vmservice-port=5037"
+    ],
+    "dart.flutterSelectDeviceWhenConnected": false
+}
